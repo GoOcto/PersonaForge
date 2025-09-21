@@ -22,6 +22,16 @@ GPU Acceleration: Full GPU support via PyTorch and CUDA for faster model inferen
 
 Extensible: Designed to be straightforward to add new models and personas.
 
+## Web Interface Preview
+
+PersonaForge provides an intuitive web interface where you can select from a variety of pre-configured characters, each with unique personalities and conversation styles:
+
+<div align="center">
+  <img src="screenshot/page.png" alt="PersonaForge Web Interface showing character selection and chat interface" width="600">
+  <br>
+  <em>The web interface featuring character selection cards and real-time chat</em>
+</div>
+
 ## System Prompt (Chatbot)
 
 When using the script as a simple command line interface, you must create a `.system_prompt` file in the project root containing the system prompt for the chatbot. This file will be gitignored for privacy and flexibility. In web mode this is ignored.
@@ -101,8 +111,10 @@ This opens a web interface that serves up index.html as an example front-end and
 
 You will need to first initiate a conversation by POSTing to the `/api/reset` endpoint, using a payload with a 'system_prompt' value. Example:
 
-```json
+```http
 POST http://localhost:5000/api/reset
+Content-Type: application/json
+
 {
     "system_prompt": "You are a pirate."
 }
@@ -110,18 +122,16 @@ POST http://localhost:5000/api/reset
 
 The API will respond with an ID that needs to be appended to the requests that follow along within that chat thread. Example JSON payload:
 
-```json
+```http
 POST http://localhost:5000/api/chat/0e6a8803-7971-4648-bd21-7b17707542b9
+Content-Type: application/json
+
 {
     "prompt": "Whats up?"
 }
 ```
 
 Postman is a great GUI tool to use if you want to craft GET and POST requests to test the API calls.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue to discuss what you would like to change.
 
 ## License
 
