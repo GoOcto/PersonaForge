@@ -32,6 +32,28 @@ PersonaForge provides an intuitive web interface where you can select from a var
   <em>The web interface featuring character selection cards and real-time chat</em>
 </div>
 
+## Customizing Web Interface Characters
+
+The web interface comes with a variety of pre-configured characters, each with unique personalities. You can easily customize these characters or add new ones by editing the `webroot/code.js` file.
+
+Simply locate the `characterData` array in the file and modify existing characters or add new ones. Each character needs:
+
+- `name`: The character's display name
+- `concept`: A detailed description of their personality and behavior
+- `avatar`: Path to their image file (optional)
+
+For example:
+
+```javascript
+{
+    name: "Your Custom Character",
+    concept: "Describe their personality, speaking style, and quirks here...",
+    avatar: "img/your-character.png"
+}
+```
+
+The concept field becomes the system prompt when a user selects that character, so be as detailed and creative as you want!
+
 ## System Prompt (Chatbot)
 
 When using the script as a simple command line interface, you must create a `.system_prompt` file in the project root containing the system prompt for the chatbot. This file will be gitignored for privacy and flexibility. In web mode this is ignored.
@@ -127,9 +149,11 @@ POST http://localhost:5000/api/chat/0e6a8803-7971-4648-bd21-7b17707542b9
 Content-Type: application/json
 
 {
-    "prompt": "Whats up?"
+    "prompt": "Have you been to the moon?"
 }
 ```
+
+**Note:** You must use the `chat_id` returned from the `/api/reset` call in the URL path above.
 
 Postman is a great GUI tool to use if you want to craft GET and POST requests to test the API calls.
 
