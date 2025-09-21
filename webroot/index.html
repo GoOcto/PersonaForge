@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- This page works best when the backend model is meta-llama -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Comic Chitchat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="/styles.css">
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Axios for AJAX -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="code.js"></script>
+</head>
+
+<body>
+    <div class="chat-container shadow-lg animate__animated animate__fadeIn">
+        <div id="backend-status" class="mb-2 text-center fw-bold text-danger" style="display:none;">
+            <i class="fa-solid fa-circle-notch fa-spin"></i> Backend server is currently offline. Waiting...
+        </div>
+        <div class="chat-title">
+            <i class="fa-solid fa-robot"></i> <span id="chat-title-text">Choose a character to chat with</span>
+        </div>
+        <div id="character-select" class="mb-3">
+            <div class="character-container g-4 row">
+                <div id="character-cards" class="row"></div>
+            </div>
+        </div>
+        <div id="chat-ui" style="display:none;">
+            <div class="d-flex align-items-center mb-2">
+                <span id="chat-avatar" style="font-size:2rem; margin-right:8px;"></span>
+                <span id="chat-character" class="fw-bold"></span>
+                <button id="back-to-characters" class="btn btn-outline-secondary btn-sm ms-auto">Back to
+                    Characters</button>
+            </div>
+            <div id="chat-character-desc" class="text-secondary mb-2"></div>
+            <div id="chat-messages" class="chat-messages"></div>
+            <form id="chat-form" autocomplete="off">
+                <div class="input-group">
+                    <input type="text" id="user-input" class="form-control" placeholder="Type your message..." required>
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div id="chat-offline-msg" class="mt-2 text-danger fw-bold" style="display:none;">
+                    <i class="fa-solid fa-circle-notch fa-spin"></i> Backend server is currently offline. Waiting for
+                    connection...
+                </div>
+        </div>
+        </form>
+    </div>
+    </div>
+</body>
+
+</html>

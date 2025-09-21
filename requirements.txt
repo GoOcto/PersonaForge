@@ -1,0 +1,14 @@
+# requirements.txt
+
+# index-url is used for the correct gpu-enabled versions of torch
+# For WSL, I didn't need to add the index-url (comment it out)
+# This is for Windows and CUDA 12.9 (check your cuda version with `nvidia-smi`)
+# --index-url https://download.pytorch.org/whl/cu129
+torch
+
+dotenv
+huggingface_hub
+accelerate
+bitsandbytes
+transformers
+flask
